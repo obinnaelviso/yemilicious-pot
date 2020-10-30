@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "229179445081",
+    "firebase_url": "https://yemilicious-a306c.firebaseio.com",
+    "project_id": "yemilicious-a306c",
+    "storage_bucket": "yemilicious-a306c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:229179445081:android:9167072ac54bb6a2304648",
+        "android_client_info": {
+          "package_name": "com.joytekmotion.yemilicious"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "229179445081-ljqvp652qjlnpuas3arhi7d4cdjs74p7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsAt4Lt0LOr0LgAaqi6_UPIsMhZvovtp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "229179445081-ljqvp652qjlnpuas3arhi7d4cdjs74p7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

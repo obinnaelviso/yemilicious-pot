@@ -1,0 +1,51 @@
+package com.joytekmotion.yemilicious.ui
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
+import com.joytekmotion.yemilicious.R
+import kotlinx.android.synthetic.main.fragment_role_setup.*
+
+/**
+ * A simple [Fragment] subclass as the default destination in the navigation.
+ */
+class RoleSetupFragment : Fragment() {
+
+    override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_role_setup, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var role = ""
+        btnBuy.setOnClickListener {
+            highlightSelectedButton(btnBuy, btnSell)
+            btnNext.isEnabled
+            role = "buyer"
+        }
+        btnSell.setOnClickListener {
+            highlightSelectedButton(btnSell, btnBuy)
+            btnNext.isEnabled = true
+            role = "seller"
+        }
+
+        btnNext.setOnClickListener {
+            val action = RoleSetupFragmentDirections.roleSetupToProfileSetup(role)
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun highlightSelectedButton(selectButton: CardView, unselectButton: CardView) {
+        selectButton.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.primary_light))
+        unselectButton.setCardBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
+    }
+}

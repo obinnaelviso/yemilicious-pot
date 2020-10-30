@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Yemilicious Pot</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email Address</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="login">Login</string>
+    <string name="please_sign_in_to_continue">Please sign in to continue</string>
+    <string name="no_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="create_an_account">Create An <br />Account</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="retype_password">Retype Password</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="name_required">First Name is required!</string>
+    <string name="phone_number_required">Phone Number is required!</string>
+    <string name="email_address_required">Email address is required!</string>
+    <string name="password_required">Password is required!</string>
+    <string name="password_length">Password must be greater than %1$d</string>
+    <string name="password_no_match">Passwords do not match</string>
+    <string name="password_retype_required">Password Retype is required!</string>
+    <string name="login_error">Invalid Credentials. Please try again!</string>
+    <string name="title_activity_setup">Setup</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="what_would_you_like_to_do">What would you like to do?</string>
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string name="finish">Finish</string>
+    <string name="fill_in_the_information_below_to_complete_setup">Fill in the information below to complete setup</string>
+    <string name="shop_address">Shop Address</string>
+    <string name="shop_name">Shop Name</string>
+    <string name="one_more_step">One more step…</string>
+    <string name="login_to_continue">Please login to continue…</string>
+    <string name="select_role">Select Role</string>
+</resources>
