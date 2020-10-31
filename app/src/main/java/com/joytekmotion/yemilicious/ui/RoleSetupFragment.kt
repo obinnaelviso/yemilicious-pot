@@ -14,6 +14,9 @@ import kotlinx.android.synthetic.main.fragment_role_setup.*
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+const val BUYER_ROLE = "buyer"
+const val SELLER_ROLE = "seller"
+
 class RoleSetupFragment : Fragment() {
 
     override fun onCreateView(
@@ -27,15 +30,19 @@ class RoleSetupFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var role = ""
+
+        // Select Buy Button
         btnBuy.setOnClickListener {
             highlightSelectedButton(btnBuy, btnSell)
             btnNext.isEnabled
-            role = "buyer"
+            role = BUYER_ROLE
         }
+
+        // Select Sell Button
         btnSell.setOnClickListener {
             highlightSelectedButton(btnSell, btnBuy)
             btnNext.isEnabled = true
-            role = "seller"
+            role = SELLER_ROLE
         }
 
         btnNext.setOnClickListener {

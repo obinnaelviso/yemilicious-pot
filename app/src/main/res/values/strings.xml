@@ -46,4 +46,7 @@
     <string name="one_more_step">One more step…</string>
     <string name="login_to_continue">Please login to continue…</string>
     <string name="select_role">Select Role</string>
+    <string name="home_address">Home Address</string>
+    <string name="profile_update_success">User profile updated successfully!</string>
+    <string name="shop_update_success">Shop updated successfully!</string>
 </resources>

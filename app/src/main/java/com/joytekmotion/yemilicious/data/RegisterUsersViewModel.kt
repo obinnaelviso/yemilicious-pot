@@ -30,6 +30,7 @@ class RegisterUsersViewModel(application: Application) : AndroidViewModel(applic
     val validationErrors: LiveData<ContentValues>
         get() = _validationErrors
 
+    // Register a new user
     fun register(user: User, passwordConfirm: String) {
         // Check if user details provided in form is valid perform registration
         if (validateUserDetails(user, passwordConfirm)) {

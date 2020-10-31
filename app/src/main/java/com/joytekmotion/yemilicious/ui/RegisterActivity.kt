@@ -21,7 +21,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         registerVm.validationErrors.observe(this, { t -> checkErrors(t) })
-        registerVm.currentUser.observe(this, { t -> isRegistered(t) })
+        registerVm.currentUser.observe(this, { startActivity(Intent(this, SetupActivity::class.java)) })
         registerVm.loginError.observe(this, { t -> Snackbar.make(registerLayout, "Error: $t", Snackbar.LENGTH_LONG).show() })
 
         // TODO: Button animation
@@ -41,16 +41,11 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerUser() {
-        val user = User(
-                regName.text.toString().trim(),
-                regEmail.text.toString().trim(),
-        )
+        val user = User()
+        user.name = regName.text.toString().trim()
+        user.email = regEmail.text.toString().trim()
         user.password = regPassword.text.toString().trim()
         registerVm.register(user, regPasswordConfirm.text.toString().trim())
-    }
-
-    private fun isRegistered(currentUser: FirebaseUser) {
-        Snackbar.make(registerLayout, "Registration successful! User is ${currentUser.displayName}", Snackbar.LENGTH_LONG).show()
     }
 
     private fun checkErrors(errors: ContentValues) {
