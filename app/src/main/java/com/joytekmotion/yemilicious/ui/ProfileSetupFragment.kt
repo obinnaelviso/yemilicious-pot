@@ -15,6 +15,7 @@ import com.joytekmotion.yemilicious.data.ProfileViewModel
 import com.joytekmotion.yemilicious.models.Shop
 import com.joytekmotion.yemilicious.models.User
 import kotlinx.android.synthetic.main.fragment_profile_setup.*
+import kotlinx.android.synthetic.main.fragment_profile_setup.view.*
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -29,19 +30,19 @@ class ProfileSetupFragment : Fragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        val root = inflater.inflate(R.layout.fragment_profile_setup, container, false)
+        if (args.userRole == BUYER_ROLE) {
+            root.edtShopName.isVisible = false
+            root.edtAddress.hint = getString(R.string.home_address)
+        }
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_setup, container, false)
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         updateProfileVm.updateSuccess.observe(viewLifecycleOwner, { Log.d(TAG, "onViewCreated: profile updated success") })
         updateProfileVm.updateFailed.observe(viewLifecycleOwner, { Log.d(TAG, "onViewCreated: profile cannot be updated") })
-
-        if (args.userRole == BUYER_ROLE) {
-            edtShopName.isVisible = false
-            edtAddress.hint = getString(R.string.home_address)
-        }
 
         // Complete App Setup
         btnFinishSetup.setOnClickListener {

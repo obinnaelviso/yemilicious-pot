@@ -49,4 +49,12 @@
     <string name="home_address">Home Address</string>
     <string name="profile_update_success">User profile updated successfully!</string>
     <string name="shop_update_success">Shop updated successfully!</string>
+    <string name="title_activity_seller_dashboard">Seller\'s Dashboard</string>
+    <string name="title_home">Home</string>
+    <string name="title_my_orders">My Orders</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="no_seller_food_added">No Food Added Yet. <br /> Click the <b>\"+\"</b> button above to add food to your restaurant</string>
+    <string name="reject">Reject</string>
+    <string name="accept">Accept</string>
+    <string name="no_order_yet">No Order Yet</string>
 </resources>
