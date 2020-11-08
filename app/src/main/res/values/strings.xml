@@ -57,4 +57,42 @@
     <string name="reject">Reject</string>
     <string name="accept">Accept</string>
     <string name="no_order_yet">No Order Yet</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="food_name">Food Name</string>
+    <string name="price">Price</string>
+    <string name="description">Description</string>
+    <string name="image_of_food">Image of the food</string>
+    <string name="save">Save</string>
+    <string name="add_food">Add Food</string>
+    <string name="edit_food">Edit Food</string>
+    <string name="food_name_required">Food name is required!</string>
+    <string name="food_price_required">Food price is required!</string>
+    <string name="food_desc_required">Food description is required!</string>
+    <string name="food_image_required">Food Image is required!</string>
+    <string name="invalid_food_price">Invalid food price</string>
+    <string name="food_price_naira">&#8358;%1$s</string>
+    <string name="logout">Logout</string>
+    <string name="title_activity_buyers_dashboard">Choose A Restaurant To Buy Food…</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="order_food">Order Food</string>
+    <string name="choose_a_restaurant_to_buy_food">Choose A Restaurant To Buy Food</string>
+    <string name="select_food_make_order">Select A Meal To Make An Order</string>
+    <string name="order_completed_success">Order completed successfully!</string>
+    <string name="view_food">View Food</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="ok">OK</string>
+    <string name="my_orders">My Orders</string>
+    <string name="cancel_order">Cancel Order</string>
+    <string name="cancel">Cancel</string>
+    <string name="order_cancelled_success">Order cancelled successfully!</string>
+    <string name="confirm_order">Confirm Order</string>
+    <string name="delivered">delivered</string>
+    <string name="order_customer_name"><b>Customer Name:</b> %1$s</string>
+    <string name="order_customer_address"><b>Address:</b> %1$s</string>
+    <string name="order_customer_phone"><b>Phone Number:</b> %1$s</string>
+    <string name="order_status_updated_success">Order status updated successfully!</string>
+    <string name="no_foods_available">Sorry, but there are no foods available in this restaurant.
+        <br />You can try another one!</string>
 </resources>

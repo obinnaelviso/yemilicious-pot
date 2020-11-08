@@ -28,7 +28,7 @@
                 android:fontFamily="@font/alfa_slab_one"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txtOrderFoodPrice"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Rice and Stew (Beef)" />
@@ -40,10 +40,22 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/didact_gothic"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/txtOrderFoodName"
-                app:layout_constraintStart_toStartOf="@+id/txtOrderFoodName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtOrderFoodName"
-                tools:text="Customer Name: Okechukwu Obinna Elvis" />
+                tools:text="Name: Okechukwu Obinna Elvis" />
+
+            <TextView
+                android:id="@+id/txtOrderFoodPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/alfa_slab_one"
+                android:textColor="@color/primary_dark"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="&#8358;50000000" />
 
             <TextView
                 android:id="@+id/txtOrderCustomerAddress"
@@ -51,10 +63,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/didact_gothic"
-                app:layout_constraintEnd_toEndOf="@+id/txtOrderCustomerName"
-                app:layout_constraintStart_toStartOf="@+id/txtOrderCustomerName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtOrderCustomerName"
                 tools:text="Address: No. 3 Okah Close, Warri, Delta State." />
+
+            <TextView
+                android:id="@+id/txtOrderCustomerPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/didact_gothic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtOrderCustomerAddress"
+                tools:text="Phone Number: 089394930004" />
 
             <TextView
                 android:id="@+id/txtOrderDate"
@@ -67,17 +90,16 @@
                 tools:text="1/11/1996" />
 
             <TextView
-                android:id="@+id/txtOrderFoodPrice"
+                android:id="@+id/txtOrderStatus"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/alfa_slab_one"
-                android:textColor="@color/primary_dark"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/txtOrderCustomerAddress"
-                app:layout_constraintTop_toBottomOf="@+id/txtOrderCustomerAddress"
-                tools:text="&#8358;5000" />
+                android:layout_marginBottom="8dp"
+                android:fontFamily="monospace"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtOrderCustomerPhone"
+                tools:text="processing..." />
 
             <Button
                 android:id="@+id/btnOrderAccept"
@@ -86,6 +108,7 @@
                 android:layout_marginEnd="8dp"
                 android:text="@string/accept"
                 android:textColor="@color/icons"
+                android:visibility="gone"
                 app:backgroundTint="@color/green"
                 app:cornerRadius="20dp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/btnOrderReject"
@@ -98,17 +121,25 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/reject"
                 android:textColor="@color/icons"
+                android:visibility="gone"
                 app:backgroundTint="@color/red"
                 app:cornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtOrderDate" />
 
-            <androidx.constraintlayout.widget.Group
-                android:id="@+id/orderResponseGroup"
+            <Button
+                android:id="@+id/btnOrderDelivered"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
-                app:constraint_referenced_ids="btnOrderAccept,btnOrderReject" />
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/delivered"
+                android:textColor="@color/icons"
+                android:visibility="gone"
+                app:cornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnOrderReject" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

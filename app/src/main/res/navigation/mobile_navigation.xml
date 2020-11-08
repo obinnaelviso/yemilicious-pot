@@ -9,12 +9,18 @@
         android:id="@+id/navigation_home"
         android:name="com.joytekmotion.yemilicious.ui.seller.SellerHomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_edit_food"
+            app:destination="@id/addFoodActivity"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_orders"
         android:name="com.joytekmotion.yemilicious.ui.seller.OrderFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_my_orders"
         tools:layout="@layout/fragment_order" />
 
     <fragment
@@ -22,4 +28,14 @@
         android:name="com.joytekmotion.yemilicious.ui.seller.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <activity
+        android:id="@+id/addFoodActivity"
+        android:name="com.joytekmotion.yemilicious.ui.seller.AddFoodActivity"
+        android:label="activity_add_food"
+        tools:layout="@layout/activity_add_food">
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </activity>
 </navigation>

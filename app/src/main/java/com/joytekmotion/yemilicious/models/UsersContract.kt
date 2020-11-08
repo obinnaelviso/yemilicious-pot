@@ -9,5 +9,7 @@ object UsersContract {
         const val EMAIL = "email"
         const val PASSWORD = "password"
         const val PASSWORD_CONFIRM = "password_confirm"
+        const val ROLE = "role"
+        const val UID = "uid"
     }
 }

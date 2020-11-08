@@ -4,21 +4,18 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.joytekmotion.yemilicious.R
-import com.joytekmotion.yemilicious.models.Shop
-import com.joytekmotion.yemilicious.models.ShopsContract
 import com.joytekmotion.yemilicious.models.User
 import com.joytekmotion.yemilicious.models.UsersContract
 
 class ProfileViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val _updateSuccess: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val updateSuccess: LiveData<String>
-        get() = _updateSuccess
+    private val _role: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val role: LiveData<String>
+        get() = _role
 
     private val _updateFailed: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val updateFailed: LiveData<String>
@@ -33,7 +30,7 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
                     .document(currentUser.uid)
                     .set(user)
                     .addOnSuccessListener {
-                        _updateSuccess.value = getApplication<Application>().getString(R.string.profile_update_success)
+                        _role.value = user.role
                     }
                     .addOnFailureListener {
                         _updateFailed.value = "${it.message}"

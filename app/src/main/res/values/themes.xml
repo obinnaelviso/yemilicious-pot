@@ -14,6 +14,12 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.YemiliciousPot.ActionBar" parent="Theme.YemiliciousPot">
+        <item name="android:textColorPrimary">@color/icons</item>
+        <item name="android:textColorSecondary">@color/icons</item>
+        <item name="actionMenuTextColor">@color/icons</item>
+    </style>
+
     <style name="Theme.YemiliciousPot.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseUser
 import com.joytekmotion.yemilicious.R
 import com.joytekmotion.yemilicious.data.RegisterUsersViewModel
 import com.joytekmotion.yemilicious.models.User

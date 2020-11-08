@@ -8,6 +8,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.joytekmotion.yemilicious.R
 import com.joytekmotion.yemilicious.data.LoginViewModel
 import com.joytekmotion.yemilicious.helpers.alertBox
+import com.joytekmotion.yemilicious.ui.buyer.BuyersDashboardActivity
+import com.joytekmotion.yemilicious.ui.seller.SellerDashboardActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -23,17 +25,24 @@ class LoginActivity : AppCompatActivity() {
         // Observe current user to check if user has setup profile
         loginVm.currentUser.observe(this, {
             if (it == null) {
-                alertBox(loginContainer, getString(R.string.login_to_continue), Snackbar.LENGTH_LONG)
+                alertBox(
+                    loginContainer,
+                    getString(R.string.login_to_continue),
+                    Snackbar.LENGTH_LONG
+                )
             } else {
                 loginVm.checkSetup(it)
             }
         })
 
         // Observe if user has setup profile to change ui
-        loginVm.isUserSetupCompleted.observe(this, {
-            if (!it) {
-                loadSetupActivity()
-            }
+        loginVm.userRole.observe(this, {
+            if (it != null) {
+                if (it == SELLER_ROLE)
+                    launchSellerDashboardActivity()
+                else
+                    launchBuyerDashboardActivity()
+            } else launchSetupActivity()
         })
 
         // Observe loginError to display error message
@@ -55,7 +64,15 @@ class LoginActivity : AppCompatActivity() {
         startActivity(Intent(this, RegisterActivity::class.java))
     }
 
-    private fun loadSetupActivity() {
+    private fun launchSetupActivity() {
         startActivity(Intent(this, SetupActivity::class.java))
+    }
+
+    private fun launchSellerDashboardActivity() {
+        startActivity(Intent(this, SellerDashboardActivity::class.java))
+    }
+
+    private fun launchBuyerDashboardActivity() {
+        startActivity(Intent(this, BuyersDashboardActivity::class.java))
     }
 }

@@ -38,19 +38,19 @@ class RegisterUsersViewModel(application: Application) : AndroidViewModel(applic
 
             Log.d(TAG, "register: Authentication STARTS")
             auth.createUserWithEmailAndPassword(user.email, user.password)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            task.result?.user?.updateProfile(userProfileChangeRequest {
-                                displayName = user.name
-                            })
-                            _currentUser.value = task.result?.user
-                            // User profile created and authenticated successfully
-                            Log.d(TAG, "register: User authentication created successfully!")
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.d(TAG, "register: createUserWithEmail:error", task.exception)
-                            _loginError.value = task.exception?.message
-                        }
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        it.result?.user?.updateProfile(userProfileChangeRequest {
+                            displayName = user.name
+                        })
+                        _currentUser.value = it.result?.user
+                        // User profile created and authenticated successfully
+                        Log.d(TAG, "register: User authentication created successfully!")
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.d(TAG, "register: createUserWithEmail:error", it.exception)
+                        _loginError.value = it.exception?.message
+                    }
                     }.addOnFailureListener {
                         // If sign in fails, display a message to the user.
                         Log.d(TAG, "register: createUserWithEmail:failure", it)

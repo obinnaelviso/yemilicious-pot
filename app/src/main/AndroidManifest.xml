@@ -3,6 +3,7 @@
     package="com.joytekmotion.yemilicious">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,9 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.YemiliciousPot">
         <activity
-            android:name=".ui.SellerDashboardActivity"
+            android:name=".ui.buyer.BuyersDashboardActivity"
+            android:label="@string/title_activity_buyers_dashboard"
+            android:theme="@style/Theme.YemiliciousPot.ActionBar" />
+        <activity
+            android:name=".ui.seller.AddFoodActivity"
+            android:label="@string/add_food"
+            android:theme="@style/Theme.YemiliciousPot" />
+        <activity
+            android:name=".ui.seller.SellerDashboardActivity"
             android:label="@string/title_activity_seller_dashboard"
-            android:theme="@style/Theme.YemiliciousPot.NoActionBar" />
+            android:theme="@style/Theme.YemiliciousPot" />
         <activity
             android:name=".ui.SetupActivity"
             android:label="@string/title_activity_setup"
