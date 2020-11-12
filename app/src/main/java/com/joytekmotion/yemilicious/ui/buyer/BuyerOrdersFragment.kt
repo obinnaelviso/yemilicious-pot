@@ -13,6 +13,7 @@ import com.joytekmotion.yemilicious.data.LoginViewModel
 import com.joytekmotion.yemilicious.data.OrderViewModel
 import com.joytekmotion.yemilicious.helpers.alertBox
 import com.joytekmotion.yemilicious.models.Order
+import com.joytekmotion.yemilicious.models.OrdersContract
 import kotlinx.android.synthetic.main.fragment_buyer_orders_list.*
 
 /**
@@ -21,9 +22,10 @@ import kotlinx.android.synthetic.main.fragment_buyer_orders_list.*
 class BuyerOrdersFragment : Fragment(), BuyersOrdersRecyclerViewAdapter.OnBuyerOrderClickListener {
     private val loginVm: LoginViewModel by viewModels()
     private val buyerOrderVm: OrderViewModel by viewModels()
+    private lateinit var buyerUid: String
     private val mAdapter by lazy {
         BuyersOrdersRecyclerViewAdapter(
-            this.context, this
+                this.context, this
         )
     }
 
@@ -32,6 +34,7 @@ class BuyerOrdersFragment : Fragment(), BuyersOrdersRecyclerViewAdapter.OnBuyerO
 
         loginVm.currentUser.observe(this, {
             buyerOrderVm.getBuyerOrders(it.uid)
+            buyerUid = it.uid
         })
 
         buyerOrderVm.buyerOrders.observe(requireActivity(), {
@@ -39,6 +42,11 @@ class BuyerOrdersFragment : Fragment(), BuyersOrdersRecyclerViewAdapter.OnBuyerO
         })
 
         buyerOrderVm.cancelSuccess.observe(requireActivity(), {
+            alertBox(rvOrdersList, it, Snackbar.LENGTH_LONG)
+        })
+
+        buyerOrderVm.orderStatusUpdate.observe(requireActivity(), {
+            buyerOrderVm.getBuyerOrders(buyerUid)
             alertBox(rvOrdersList, it, Snackbar.LENGTH_LONG)
         })
     }
@@ -63,4 +71,7 @@ class BuyerOrdersFragment : Fragment(), BuyersOrdersRecyclerViewAdapter.OnBuyerO
         buyerOrderVm.removeOrder(order)
     }
 
+    override fun onDeliveredClick(order: Order) {
+        buyerOrderVm.updateOrderStatus(order, OrdersContract.Responses.DELIVERED)
+    }
 }

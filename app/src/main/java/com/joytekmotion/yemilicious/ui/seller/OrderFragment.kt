@@ -14,16 +14,15 @@ import com.joytekmotion.yemilicious.data.OrderViewModel
 import com.joytekmotion.yemilicious.helpers.alertBox
 import com.joytekmotion.yemilicious.models.Order
 import com.joytekmotion.yemilicious.models.OrdersContract
-import kotlinx.android.synthetic.main.fragment_buyer_orders_list.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_order.*
 
 class OrderFragment : Fragment(), SellersOrdersRecyclerViewAdapter.OnSellerOrderClickListener {
     private val loginVm: LoginViewModel by viewModels()
     private val orderVm: OrderViewModel by viewModels()
+    private lateinit var sellerUid: String
     private val mAdapter by lazy {
         SellersOrdersRecyclerViewAdapter(
-            this.context, this
+                this.context, this
         )
     }
 
@@ -32,6 +31,7 @@ class OrderFragment : Fragment(), SellersOrdersRecyclerViewAdapter.OnSellerOrder
 
         loginVm.currentUser.observe(this, {
             orderVm.getSellerOrders(it.uid)
+            sellerUid = it.uid
         })
 
         orderVm.sellerOrders.observe(requireActivity(), {
@@ -42,6 +42,7 @@ class OrderFragment : Fragment(), SellersOrdersRecyclerViewAdapter.OnSellerOrder
 
         orderVm.orderStatusUpdate.observe(requireActivity(), {
             alertBox(lytSellOrder, it, Snackbar.LENGTH_LONG)
+            orderVm.getSellerOrders(sellerUid)
         })
     }
 
@@ -67,9 +68,5 @@ class OrderFragment : Fragment(), SellersOrdersRecyclerViewAdapter.OnSellerOrder
 
     override fun onAcceptClick(order: Order) {
         orderVm.updateOrderStatus(order, OrdersContract.Responses.PROCESSING)
-    }
-
-    override fun onDeliveredClick(order: Order) {
-        orderVm.updateOrderStatus(order, OrdersContract.Responses.DELIVERED)
     }
 }

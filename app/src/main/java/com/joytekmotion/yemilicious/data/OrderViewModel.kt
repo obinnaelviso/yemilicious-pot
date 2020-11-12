@@ -105,7 +105,6 @@ class OrderViewModel(application: Application) : AndroidViewModel(application) {
             .addOnSuccessListener {
                 _orderStatusUpdate.value =
                     getApplication<Application>().getString(R.string.order_status_updated_success)
-                getSellerOrders(order.seller?.uid!!)
             }
             .addOnFailureListener {
                 _orderStatusError.value = it.message

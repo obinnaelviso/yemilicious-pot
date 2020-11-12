@@ -35,40 +35,55 @@ class BuyerOrderViewModel(override val containerView: View) :
         containerView.tvOrderListAddress.text = order.seller?.shop?.address
         containerView.tvOrderListStatus.text = order.status.capitalize(Locale.getDefault())
 
-        containerView.btnCancelOrder.setOnClickListener {
-            listener.onCancelClick(order)
-        }
         when (order.status) {
             OrdersContract.Responses.PENDING -> {
                 containerView.btnCancelOrder.visibility = View.VISIBLE
+                containerView.btnOrderDelivered.visibility = View.GONE
                 containerView.tvOrderListStatus.setTextColor(
-                    ContextCompat.getColor(
-                        context!!,
-                        R.color.yellow
-                    )
+                        ContextCompat.getColor(
+                                context!!,
+                                R.color.yellow
+                        )
                 )
             }
             OrdersContract.Responses.PROCESSING -> {
                 containerView.btnCancelOrder.visibility = View.GONE
+                containerView.btnOrderDelivered.visibility = View.VISIBLE
+                containerView.tvOrderListStatus.setTextColor(
+                        ContextCompat.getColor(
+                                context!!,
+                                R.color.secondary_text
+                        )
+                )
             }
             OrdersContract.Responses.DELIVERED -> {
                 containerView.btnCancelOrder.visibility = View.GONE
+                containerView.btnOrderDelivered.visibility = View.GONE
                 containerView.tvOrderListStatus.setTextColor(
-                    ContextCompat.getColor(
-                        context!!,
-                        R.color.green
-                    )
+                        ContextCompat.getColor(
+                                context!!,
+                                R.color.green
+                        )
                 )
             }
             else -> {
                 containerView.btnCancelOrder.visibility = View.GONE
+                containerView.btnOrderDelivered.visibility = View.GONE
                 containerView.tvOrderListStatus.setTextColor(
-                    ContextCompat.getColor(
-                        context!!,
-                        R.color.red
-                    )
+                        ContextCompat.getColor(
+                                context!!,
+                                R.color.red
+                        )
                 )
             }
+        }
+
+        containerView.btnCancelOrder.setOnClickListener {
+            listener.onCancelClick(order)
+        }
+
+        containerView.btnOrderDelivered.setOnClickListener {
+            listener.onDeliveredClick(order)
         }
     }
 }
@@ -93,6 +108,7 @@ class BuyersOrdersRecyclerViewAdapter(
 
     interface OnBuyerOrderClickListener {
         fun onCancelClick(order: Order)
+        fun onDeliveredClick(order: Order)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuyerOrderViewModel {

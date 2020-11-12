@@ -50,7 +50,6 @@ class SellerOrderViewModel(override val containerView: View) :
             OrdersContract.Responses.PENDING -> {
                 containerView.btnOrderAccept.visibility = View.VISIBLE
                 containerView.btnOrderReject.visibility = View.VISIBLE
-                containerView.btnOrderDelivered.visibility = View.GONE
                 containerView.txtOrderStatus.setTextColor(
                     ContextCompat.getColor(
                         context!!,
@@ -61,12 +60,10 @@ class SellerOrderViewModel(override val containerView: View) :
             OrdersContract.Responses.PROCESSING -> {
                 containerView.btnOrderAccept.visibility = View.GONE
                 containerView.btnOrderReject.visibility = View.GONE
-                containerView.btnOrderDelivered.visibility = View.VISIBLE
             }
             OrdersContract.Responses.DELIVERED -> {
                 containerView.btnOrderAccept.visibility = View.GONE
                 containerView.btnOrderReject.visibility = View.GONE
-                containerView.btnOrderDelivered.visibility = View.GONE
                 containerView.txtOrderStatus.setTextColor(
                     ContextCompat.getColor(
                         context!!,
@@ -77,7 +74,6 @@ class SellerOrderViewModel(override val containerView: View) :
             else -> {
                 containerView.btnOrderAccept.visibility = View.GONE
                 containerView.btnOrderReject.visibility = View.GONE
-                containerView.btnOrderDelivered.visibility = View.GONE
                 containerView.txtOrderStatus.setTextColor(
                     ContextCompat.getColor(
                         context!!,
@@ -94,10 +90,6 @@ class SellerOrderViewModel(override val containerView: View) :
         containerView.btnOrderReject.setOnClickListener {
             listener.onRejectClick(order)
         }
-
-        containerView.btnOrderDelivered.setOnClickListener {
-            listener.onDeliveredClick(order)
-        }
     }
 }
 
@@ -108,7 +100,6 @@ class SellersOrdersRecyclerViewAdapter(
     interface OnSellerOrderClickListener {
         fun onRejectClick(order: Order)
         fun onAcceptClick(order: Order)
-        fun onDeliveredClick(order: Order)
     }
 
     private val differCallback = object : DiffUtil.ItemCallback<Order>() {
